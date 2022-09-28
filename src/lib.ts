@@ -1,8 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 import readline from 'readline'
-import { earth_radius } from '@/constants'
-import { GCDOptions } from '@/types'
+import { earth_radius, sofia_location } from '@/constants'
+import { Partner, InvitedPartner, GCDOptions, InvitedPartners } from '@/types'
 
 export async function textToJson(
     fileDirectory: string,
@@ -34,4 +34,29 @@ export function greatCircleDistance(options: GCDOptions): string {
     const d = earth_radius * a
 
     return (d / 1000).toPrecision(4) // distance in kilometers with precision around the meters
+}
+
+export function setInvitedPartners(partners: Partner[]): InvitedPartner[] {
+    return partners
+        .sort((a, b) => a.partner_id - b.partner_id) // sorted by id
+        .map(({ partner_id, name, latitude, longitude }) => ({
+            id: partner_id,
+            name,
+            distance: greatCircleDistance({
+                ...sofia_location,
+                lat2: latitude,
+                lng2: longitude,
+            }),
+        })) // modified to return only id, name and distance
+        .filter(p => Number(p.distance) <= 100) // and filtered to partners within 100 km
+}
+
+export async function loadInvitedPartners(): Promise<InvitedPartners> {
+    try {
+        const partners = await textToJson('data', 'partners.txt')
+
+        return { partners: setInvitedPartners(partners), error: false }
+    } catch (err) {
+        return { partners: [], error: true }
+    }
 }

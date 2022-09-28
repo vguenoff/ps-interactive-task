@@ -17,3 +17,8 @@ export interface GCDOptions {
     lat2: number | string
     lng2: number | string
 }
+
+export interface InvitedPartners {
+    partners: InvitedPartner[]
+    error?: boolean
+}

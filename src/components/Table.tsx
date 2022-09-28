@@ -1,13 +1,9 @@
-import { InvitedPartner } from '@/types'
+import { InvitedPartners } from '@/types'
 import TableRow from './TableRow'
 
 import styles from '@/styles/Table.module.scss'
 
-interface Props {
-    partners: InvitedPartner[]
-}
-
-export default function Table({ partners }: Props): JSX.Element {
+export default function Table({ partners }: InvitedPartners) {
     return (
         <>
             <h3>Company birthday guests within 100 km</h3>

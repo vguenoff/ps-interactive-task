@@ -1,10 +1,6 @@
 import { InvitedPartner } from '@/types'
 
-export default function TableRow({
-    id,
-    name,
-    distance,
-}: InvitedPartner): JSX.Element {
+export default function TableRow({ id, name, distance }: InvitedPartner) {
     return (
         <tr>
             <td>{id}</td>

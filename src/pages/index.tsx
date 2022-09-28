@@ -1,21 +1,23 @@
-import useSWR from 'swr'
-import type { NextPage } from 'next'
-
 import Table from '@/components/Table'
 import TableError from '@/components/TableError'
 
 import styles from '@/styles/Home.module.scss'
+import { loadInvitedPartners } from '@/lib'
+import { InvitedPartners } from '@/types'
 
-const Home: NextPage = () => {
-    const { data: partners, error } = useSWR('/api/partners', url =>
-        fetch(url).then(res => res.json()),
-    )
+export const getStaticProps = async () => {
+    const { partners, error } = await loadInvitedPartners()
 
+    return {
+        props: { partners, error },
+    }
+}
+
+function Home({ partners, error }: InvitedPartners) {
     return (
         <div className={styles.home}>
             <main className="table-background">
-                {error && <TableError />}
-                {partners && <Table {...{ partners }} />}
+                {error ? <TableError /> : <Table {...{ partners }} />}
             </main>
         </div>
     )
