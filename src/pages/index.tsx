@@ -6,7 +6,7 @@ import Table from '@/components/Table'
 
 const Home: NextPage = () => {
     return (
-        <div className={styles.container}>
+        <div className={styles.home}>
             <Head>
                 <title>Ps Interactive Task</title>
                 <meta name="description" content="Technical Assignment" />
@@ -14,7 +14,8 @@ const Home: NextPage = () => {
             </Head>
 
             <main>
-                <h1>Company birthday guests</h1>
+                <h3>Company birthday guests within 100 km</h3>
+                <h1>Partners</h1>
                 <Table />
             </main>
         </div>

@@ -1,0 +1,44 @@
+.table {
+    display: grid;
+    min-width: 100%;
+    grid-template-columns:
+        minmax(100px, 1fr)
+        minmax(100px, 3fr)
+        minmax(100px, 2fr);
+
+    thead,
+    tbody,
+    tr {
+        display: contents;
+    }
+
+    th,
+    td {
+        padding: 7px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    th {
+        background: #4158d0;
+        text-align: left;
+        font-weight: normal;
+        font-size: 1.1rem;
+        color: white;
+
+        &:last-child {
+            border: 0;
+        }
+    }
+
+    td {
+        color: #808080;
+    }
+
+    tr:nth-child(even) {
+        td {
+            background: #f8f6ff;
+        }
+    }
+}
