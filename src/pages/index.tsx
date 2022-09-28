@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+
+import styles from '@/styles/Home.module.scss'
+import Table from '@/components/Table'
 
 const Home: NextPage = () => {
     return (
@@ -12,7 +14,8 @@ const Home: NextPage = () => {
             </Head>
 
             <main>
-                <h1>Home page</h1>
+                <h1>Company birthday guests</h1>
+                <Table />
             </main>
         </div>
     )
