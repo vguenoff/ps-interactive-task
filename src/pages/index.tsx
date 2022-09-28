@@ -1,9 +1,9 @@
+import { InvitedPartners } from '@/types'
 import Table from '@/components/Table'
 import TableError from '@/components/TableError'
+import { loadInvitedPartners } from '@/lib'
 
 import styles from '@/styles/Home.module.scss'
-import { loadInvitedPartners } from '@/lib'
-import { InvitedPartners } from '@/types'
 
 export const getStaticProps = async () => {
     const { partners, error } = await loadInvitedPartners()

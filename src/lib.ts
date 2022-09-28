@@ -1,8 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 import readline from 'readline'
-import { earth_radius, sofia_location } from '@/constants'
 import { Partner, InvitedPartner, GCDOptions, InvitedPartners } from '@/types'
+import { earth_radius, sofia_location } from '@/constants'
 
 export async function textToJson(
     fileDirectory: string,
