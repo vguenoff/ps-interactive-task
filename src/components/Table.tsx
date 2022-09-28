@@ -1,5 +1,6 @@
-import TableRow from './TableRow'
 import { Partner } from '@/types'
+import TableRow from './TableRow'
+
 import styles from '@/styles/Table.module.scss'
 
 interface Props {
@@ -20,20 +21,18 @@ export default function Table({ partners }: Props): JSX.Element {
                     </tr>
                 </thead>
                 <tbody>
-                    {partners
-                        ?.sort((a, b) => a.partner_id - b.partner_id)
-                        .map(
-                            ({ partner_id: id, name, latitude, longitude }) => {
-                                const distance = 100
+                    {partners.map(
+                        ({ partner_id: id, name, latitude, longitude }) => {
+                            const distance = 100
 
-                                return (
-                                    <TableRow
-                                        key={id}
-                                        {...{ id, name, distance }}
-                                    />
-                                )
-                            },
-                        )}
+                            return (
+                                <TableRow
+                                    key={id}
+                                    {...{ id, name, distance }}
+                                />
+                            )
+                        },
+                    )}
                 </tbody>
             </table>
         </>
