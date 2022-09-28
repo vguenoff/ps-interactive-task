@@ -1,37 +1,32 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
-import fs from 'fs'
-import readline from 'readline'
-import { Partner } from '@/types'
+import { Partner, InvitedPartner } from '@/types'
+import { textToJson, greatCircleDistance } from '@/utils'
+import { sofia_location } from '@/constants'
 
-async function textToJson(file: string): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-        const readStream = fs.createReadStream(file)
-        readStream.on('error', reject)
-        const array: any[] = []
-
-        const reader = readline.createInterface({ input: readStream })
-        reader.on('line', (line: string) => array.push(JSON.parse(line)))
-        reader.on('close', () => resolve(array))
-    })
-}
-
-async function getPartnersData(): Promise<Partner[]> {
-    const fileDirectory = path.join(process.cwd(), 'data')
-    const response = await textToJson(`${fileDirectory}/partners.txt`)
-
-    return response
+function setPartnersToInvite(partners: Partner[]): InvitedPartner[] {
+    return partners
+        .sort((a, b) => a.partner_id - b.partner_id) // sorted by id
+        .map(({ partner_id, name, latitude, longitude }) => ({
+            id: partner_id,
+            name,
+            distance: greatCircleDistance({
+                ...sofia_location,
+                lat2: latitude,
+                lng2: longitude,
+            }),
+        })) // modified to return only id, name and distance
+        .filter(p => Number(p.distance) <= 100) // and filtered to partners within 100 km
 }
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Partner[]>,
+    res: NextApiResponse<InvitedPartner[]>,
 ) {
     try {
-        const data = await getPartnersData()
-        const sortedPartners = data.sort((a, b) => a.partner_id - b.partner_id)
+        const partners = await textToJson('data', 'partners.txt')
+        const partnersToInvite = setPartnersToInvite(partners)
 
-        res.status(200).json(sortedPartners)
+        res.status(200).json(partnersToInvite)
     } catch (err) {
         console.error(err)
     }

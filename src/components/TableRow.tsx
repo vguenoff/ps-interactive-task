@@ -1,10 +1,10 @@
-interface Props {
-    id: number
-    name: string
-    distance: number
-}
+import { InvitedPartner } from '@/types'
 
-export default function TableRow({ id, name, distance }: Props): JSX.Element {
+export default function TableRow({
+    id,
+    name,
+    distance,
+}: InvitedPartner): JSX.Element {
     return (
         <tr>
             <td>{id}</td>

@@ -2,9 +2,9 @@
     display: grid;
     min-width: 100%;
     grid-template-columns:
-        minmax(100px, 1fr)
-        minmax(100px, 3fr)
-        minmax(100px, 2fr);
+        minmax(50px, 1fr)
+        minmax(100px, 9fr)
+        minmax(100px, 5fr);
 
     thead,
     tbody,
@@ -14,10 +14,14 @@
 
     th,
     td {
-        padding: 7px;
+        padding: 7px 15px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        &:first-child {
+            text-align: right;
+        }
     }
 
     th {

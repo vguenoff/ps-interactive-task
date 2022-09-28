@@ -1,10 +1,10 @@
-import { Partner } from '@/types'
+import { InvitedPartner } from '@/types'
 import TableRow from './TableRow'
 
 import styles from '@/styles/Table.module.scss'
 
 interface Props {
-    partners: Partner[]
+    partners: InvitedPartner[]
 }
 
 export default function Table({ partners }: Props): JSX.Element {
@@ -15,24 +15,15 @@ export default function Table({ partners }: Props): JSX.Element {
             <table className={styles.table}>
                 <thead>
                     <tr>
-                        <th>Partner Id</th>
+                        <th>Id</th>
                         <th>Name</th>
-                        <th>Distance</th>
+                        <th>Distance (km)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {partners.map(
-                        ({ partner_id: id, name, latitude, longitude }) => {
-                            const distance = 100
-
-                            return (
-                                <TableRow
-                                    key={id}
-                                    {...{ id, name, distance }}
-                                />
-                            )
-                        },
-                    )}
+                    {partners.map(({ id, name, distance }) => (
+                        <TableRow key={id} {...{ id, name, distance }} />
+                    ))}
                 </tbody>
             </table>
         </>
