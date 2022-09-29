@@ -5,7 +5,7 @@ import { loadInvitedPartners } from '@/lib'
 
 import styles from '@/styles/Home.module.scss'
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
     const { partners, error } = await loadInvitedPartners()
 
     return {

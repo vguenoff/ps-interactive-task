@@ -2,12 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { InvitedPartners } from '@/types'
 import { loadInvitedPartners } from '@/lib'
 
-// This is just to have a working endpoint with the invited partners data
+// This is just to have an endpoint with the invited partners data on /api/partners
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<InvitedPartners>,
 ) {
-    const InvitedPartners = await loadInvitedPartners()
+    const invitedPartners = await loadInvitedPartners()
 
-    res.status(200).json(InvitedPartners)
+    res.status(200).json(invitedPartners)
 }

@@ -4,13 +4,16 @@ import readline from 'readline'
 import { Partner, InvitedPartner, GCDOptions, InvitedPartners } from '@/types'
 import { earth_radius, sofia_location } from '@/constants'
 
-export async function textToJson(
-    fileDirectory: string,
-    fileName: string,
-): Promise<any[]> {
+export async function textToJson({
+    directory = '',
+    filename,
+}: {
+    directory: string
+    filename: string
+}): Promise<any[]> {
     return new Promise((resolve, reject) => {
         const readStream = fs.createReadStream(
-            `${path.join(process.cwd(), fileDirectory)}/${fileName}`,
+            `${path.join(process.cwd(), directory)}/${filename}`,
         )
         readStream.on('error', reject)
         const array: any[] = []
@@ -38,7 +41,6 @@ export function greatCircleDistance(options: GCDOptions): string {
 
 export function setInvitedPartners(partners: Partner[]): InvitedPartner[] {
     return partners
-        .sort((a, b) => a.partner_id - b.partner_id) // sorted by id
         .map(({ partner_id, name, latitude, longitude }) => ({
             id: partner_id,
             name,
@@ -48,12 +50,16 @@ export function setInvitedPartners(partners: Partner[]): InvitedPartner[] {
                 lng2: longitude,
             }),
         })) // modified to return only id, name and distance
-        .filter(p => Number(p.distance) <= 100) // and filtered to partners within 100 km
+        .filter(p => Number(p.distance) <= 100) //  filtered to partners within 100 km
+        .sort((a, b) => a.id - b.id) // and sorted by id (ascending)
 }
 
 export async function loadInvitedPartners(): Promise<InvitedPartners> {
     try {
-        const partners = await textToJson('data', 'partners.txt')
+        const partners = await textToJson({
+            directory: 'data',
+            filename: 'partners.txt',
+        })
 
         return { partners: setInvitedPartners(partners), error: false }
     } catch (err) {
