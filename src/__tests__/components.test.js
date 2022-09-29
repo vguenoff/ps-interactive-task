@@ -1,13 +1,13 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import Table from '../components/Table'
-import TableRow from '../components/TableRow'
-import TableError from '../components/TableError'
-import mockData from '../../mockData/invitedPartners.json'
+import Table from '@/components/Table'
+import TableRow from '@/components/TableRow'
+import TableError from '@/components/TableError'
+import mockDataInvited from '../../mockData/invitedPartners.json'
 
 describe('Components', () => {
     test('renders a table headings', () => {
-        const props = mockData
+        const props = mockDataInvited
         render(<Table {...props} />)
 
         expect(
@@ -28,7 +28,7 @@ describe('Components', () => {
     })
 
     test('renders a table row', () => {
-        const props = mockData.partners.at(0)
+        const props = mockDataInvited.partners.at(0)
         const tableRow = document.createElement('tbody')
         render(<TableRow {...props} />, {
             container: document.body.appendChild(tableRow),

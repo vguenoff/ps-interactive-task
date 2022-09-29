@@ -40,15 +40,13 @@ export function greatCircleDistance(options: GCDOptions): string {
 }
 
 export function setInvitedPartners(partners: Partner[]): InvitedPartner[] {
+    const [lat1, lng1] = sofia_location
+
     return partners
-        .map(({ partner_id, name, latitude, longitude }) => ({
+        .map(({ partner_id, name, latitude: lat2, longitude: lng2 }) => ({
             id: partner_id,
             name,
-            distance: greatCircleDistance({
-                ...sofia_location,
-                lat2: latitude,
-                lng2: longitude,
-            }),
+            distance: greatCircleDistance({ lat1, lng1, lat2, lng2 }),
         })) // modified to return only id, name and distance
         .filter(p => Number(p.distance) <= 100) //  filtered to partners within 100 km
         .sort((a, b) => a.id - b.id) // and sorted by id (ascending)
