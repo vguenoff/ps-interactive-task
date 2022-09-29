@@ -25,11 +25,11 @@
     }
 
     th {
-        background: #4158d0;
+        background: var(--table-header);
         text-align: left;
         font-weight: normal;
         font-size: 1.1rem;
-        color: white;
+        color: var(--white);
 
         &:last-child {
             border: 0;
@@ -37,12 +37,12 @@
     }
 
     td {
-        color: #808080;
+        color: var(--td-color);
     }
 
     tr:nth-child(even) {
         td {
-            background: #f8f6ff;
+            background: var(--tr-even-color);
         }
     }
 }

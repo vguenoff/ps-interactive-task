@@ -1,0 +1,120 @@
+{
+    "partners": [
+        {
+            "id": 1,
+            "name": "Jamelia Waller",
+            "distance": "11.73"
+        },
+        {
+            "id": 3,
+            "name": "Gracie-Leigh Mccallum",
+            "distance": "6.513"
+        },
+        {
+            "id": 5,
+            "name": "Margot Mckay",
+            "distance": "49.04"
+        },
+        {
+            "id": 6,
+            "name": "Jodie Dyer",
+            "distance": "11.78"
+        },
+        {
+            "id": 8,
+            "name": "Ffion Firth",
+            "distance": "5.531"
+        },
+        {
+            "id": 9,
+            "name": "Billie-Jo Dunlap",
+            "distance": "6.846"
+        },
+        {
+            "id": 10,
+            "name": "Sachin Chan",
+            "distance": "10.88"
+        },
+        {
+            "id": 11,
+            "name": "Una Beach",
+            "distance": "5.191"
+        },
+        {
+            "id": 12,
+            "name": "Bluebell Robles",
+            "distance": "4.766"
+        },
+        {
+            "id": 13,
+            "name": "Nur Combs",
+            "distance": "64.57"
+        },
+        {
+            "id": 14,
+            "name": "Vincenzo Conner",
+            "distance": "15.54"
+        },
+        {
+            "id": 16,
+            "name": "Maddy Novak",
+            "distance": "3.222"
+        },
+        {
+            "id": 17,
+            "name": "Kodi Collier",
+            "distance": "4.781"
+        },
+        {
+            "id": 18,
+            "name": "Vladimir Vasov",
+            "distance": "48.79"
+        },
+        {
+            "id": 19,
+            "name": "Butterfree Crackersprout",
+            "distance": "11.92"
+        },
+        {
+            "id": 20,
+            "name": "Oscarbait Crackersprout",
+            "distance": "9.879"
+        },
+        {
+            "id": 21,
+            "name": "Bendydick Chickenstrips",
+            "distance": "17.26"
+        },
+        {
+            "id": 24,
+            "name": "Rada Ilieva",
+            "distance": "16.88"
+        },
+        {
+            "id": 25,
+            "name": "Bombadil Rivendell",
+            "distance": "9.220"
+        },
+        {
+            "id": 27,
+            "name": "Francisco Fleming",
+            "distance": "25.46"
+        },
+        {
+            "id": 28,
+            "name": "Romy Harrison",
+            "distance": "12.50"
+        },
+        {
+            "id": 30,
+            "name": "Bunsenburner Crumplehorn",
+            "distance": "6.354"
+        },
+        {
+            "id": 39,
+            "name": "Patience Lyon",
+            "distance": "10.43"
+        }
+    ],
+    "error": false
+}

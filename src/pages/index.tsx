@@ -13,7 +13,7 @@ export async function getStaticProps() {
     }
 }
 
-function Home({ partners, error }: InvitedPartners) {
+export default function Home({ partners, error }: InvitedPartners) {
     return (
         <div className={styles.home}>
             <main className="table-background">
@@ -22,5 +22,3 @@ function Home({ partners, error }: InvitedPartners) {
         </div>
     )
 }
-
-export default Home

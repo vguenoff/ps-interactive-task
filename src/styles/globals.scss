@@ -1,3 +1,13 @@
+:root {
+    --white: #fff;
+    --gradient-1: #4158d0;
+    --gradient-2: #c850c0;
+    --gradient-3: #ffcc70;
+    --table-header: #4158d0;
+    --td-color: #808080;
+    --tr-even-color: #f8f6ff;
+}
+
 html,
 body {
     padding: 0;
@@ -5,7 +15,12 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-    background: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    background: linear-gradient(
+        43deg,
+        var(--gradient-1) 0%,
+        var(--gradient-2) 46%,
+        var(--gradient-3) 100%
+    );
 }
 
 * {
@@ -13,11 +28,11 @@ body {
 }
 
 .table-background {
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 10px;
     padding: 20px;
 
     .error {
-        color: #4158d0;
+        color: var(--gradient-1);
     }
 }
